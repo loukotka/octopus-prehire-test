@@ -1,0 +1,36 @@
+<style>
+    .cd-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+    .loadingFailed,.nothingSelected,.chart {
+        padding: 20px;
+    }
+    .loadingFailed,.nothingSelected {
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: sans-serif;
+    }
+    .chart {
+        width: 80%;
+    }
+    .currencyStats {
+        font-size: 1.5rem;
+        font-family: sans-serif;
+    }
+
+</style>
+<div class="cd-wrapper">
+    <div *ngIf="loadingFailed" class="loadingFailed">Detail nenalezen</div>
+    <div *ngIf="!currency && !loadingFailed" class="nothingSelected">Nebyla vybrána měna</div>
+    <div *ngIf="currency" class="currencyStats">
+        {{currency.code}} - {{currency.country}} <br/>
+        Průměrný kurz: {{getCurrencyRateAverage().toFixed(3)}}
+    </div>
+    <app-line-chart *ngIf="currency" [currency]="currency" class="chart"></app-line-chart>
+    <app-loading-overlay *ngIf="loading"></app-loading-overlay>
+</div>

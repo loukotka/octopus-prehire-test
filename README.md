@@ -1,5 +1,15 @@
 # octopus-prehire-test
 
+## Installation and running
+```
+npm i
+cd client
+npm i
+npm run build
+cd ..
+node server
+```
+
 ## Test definition
 
 * Create web application in Angular for displaying currencies and rates.

@@ -1,0 +1,43 @@
+<style>
+    .searchInput {
+        width: 150px;
+        margin: auto;
+        margin-bottom: 16px;
+    }
+
+    .currency-row {
+        display: grid;
+        grid-template-columns: 100px auto;
+        justify-content: stretch;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+    .currency-row:hover {
+        background-color: #ccccff;
+
+    }
+
+    .currency-row.selected {
+        background-color: #8888ff;
+    }
+
+    .list>.code {
+        width: 100px;
+    }
+    .cl-wrappe {
+        position: relative;
+    }
+</style>
+<div class="cl-wrapper">
+    <input (keyup)="onSearchChange($event.target)" class="searchInput" />
+    <div *ngFor="let currency of filteredCurrencies" class="list">
+        <div [class.selected]="currency===selectedCurrency" class="currency-row"
+            (click)="this.onCurrencyClick(currency)">
+            <div class="code">{{currency.code}}</div>
+            <div>{{currency.country}}</div>
+        </div>
+    </div>
+    <app-loading-overlay *ngIf="loading"></app-loading-overlay>
+</div>

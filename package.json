@@ -1,0 +1,9 @@
+{
+    "name": "octopus-prehire",
+    "author": {
+        "name": "Loukotka"
+    },
+    "dependencies": {
+        "express": "^4.17.2"
+    }
+}
